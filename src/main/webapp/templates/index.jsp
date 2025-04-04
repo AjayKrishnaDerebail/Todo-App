@@ -23,17 +23,22 @@
         <div class="col-md-2">
             <h3 class="text-center">Options</h3>
             <div class="list-group">
-                <button type="button" class="list-group-item list-group-item-action active">
+                <a href="<c:url value="/add" />" type="button" class="list-group-item list-group-item-action active">
                     Add todo
-                </button>
-                <button type="button" class="list-group-item list-group-item-action">
+                </a>
+                <a href="<c:url value="/" />" type="button" class="list-group-item list-group-item-action">
                     View todo
-                </button>
+                </a>
             </div>
         </div>
         <div class="col-md-10">
             <h3 class="text-center">Content</h3>
-            <h1></h1>
+            <c:if test="${page=='home'}">
+                <h3 class="text-center">All todos</h3>
+            </c:if>
+            <c:if test="${page=='add'}">
+                <h3 class="text-center">Add todos</h3>
+            </c:if>
         </div>
     </div>
 

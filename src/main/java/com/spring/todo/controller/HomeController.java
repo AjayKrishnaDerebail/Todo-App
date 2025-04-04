@@ -10,7 +10,16 @@ public class HomeController {
   @RequestMapping("/")
   public String index(Model model) {
     System.out.println("index");
-    String str = "Home";
-    model.addAttribute("str",str);
-    return "index"; }
+    String page = "home";
+    model.addAttribute("page",page);
+    return "index";
+  }
+
+  @RequestMapping("/add")
+  public String addTodo(Model model) {
+    System.out.println("index");
+    String page = "add";
+    model.addAttribute("page",page);
+    return "index";
+  }
 }
