@@ -1,11 +1,7 @@
 package com.spring.todo.listener;
 
-import com.spring.todo.entities.Todo;
-import jakarta.servlet.ServletContext;
 import jakarta.servlet.ServletContextEvent;
 import jakarta.servlet.ServletContextListener;
-import java.util.ArrayList;
-import java.util.List;
 
 public class MyListener implements ServletContextListener {
 
