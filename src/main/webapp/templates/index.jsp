@@ -20,6 +20,11 @@
 <body>
 <div class="container mt-3">
     <h1 class="text-center">Welcome to the Todo App</h1>
+    <c:if test="${not empty message}">
+        <div class="alert alert-success">
+            <c:out value="${message}"/>
+        </div>
+    </c:if>
     <div class="row mt-4">
         <div class="col-md-2">
             <h3 class="text-center">Options</h3>
@@ -38,6 +43,14 @@
             <h3 class="text-center">Content</h3>
             <c:if test="${page=='home'}">
                 <h3 class="text-center">All todos</h3>
+                <c:forEach items="${todoList}" var="todo">
+                    <div class="card">
+                        <div class="card-body">
+                            <h3 class="card-title"><c:out value="${todo.title}" /></h3>
+                            <p class="card-text"><c:out value="${todo.content}" /></p>
+                        </div>
+                    </div>
+                </c:forEach>
             </c:if>
             <c:if test="${page=='add'}">
                 <h3 class="text-center">Add todos</h3>
