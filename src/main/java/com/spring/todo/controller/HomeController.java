@@ -3,7 +3,6 @@ package com.spring.todo.controller;
 import com.spring.todo.entities.Todo;
 import com.spring.todo.repositories.TodoDao;
 import java.util.List;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -19,8 +18,11 @@ public class HomeController {
     ServletContext context;
   */
 
-  @Autowired
-  TodoDao todoDao;
+  private final TodoDao todoDao;
+
+  public HomeController(TodoDao todoDao) {
+    this.todoDao = todoDao;
+  }
 
   @RequestMapping("/")
   public String index(Model model) {
