@@ -8,17 +8,17 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MyListener implements ServletContextListener {
-    
-    @Override
-    public void contextInitialized(ServletContextEvent sce) {
-        System.out.println("Context initialized...");
-        List<Todo> todoList = new ArrayList<>();
-      ServletContext context = sce.getServletContext();
-      context.setAttribute("todoList", todoList);
-    }
-    
-    @Override
-    public void contextDestroyed(ServletContextEvent sce) {
-        System.out.println("Context destroyed...");
-    }
+
+  @Override
+  public void contextInitialized(ServletContextEvent sce) {
+    System.out.println("Context initialized...");
+/*    List<Todo> todoList = new ArrayList<>();
+    ServletContext context = sce.getServletContext();
+    context.setAttribute("todoList", todoList);*/
+  }
+
+  @Override
+  public void contextDestroyed(ServletContextEvent sce) {
+    System.out.println("Context destroyed...");
+  }
 }
