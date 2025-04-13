@@ -1,4 +1,5 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <!doctype html>
 <html lang="en">
 <head>
@@ -23,10 +24,12 @@
         <div class="col-md-2">
             <h3 class="text-center">Options</h3>
             <div class="list-group">
-                <a href="<c:url value="/add" />" type="button" class="list-group-item list-group-item-action active">
+                <a href="<c:url value="/add" />" type="button"
+                   class="list-group-item list-group-item-action active">
                     Add todo
                 </a>
-                <a href="<c:url value="/" />" type="button" class="list-group-item list-group-item-action">
+                <a href="<c:url value="/" />" type="button"
+                   class="list-group-item list-group-item-action">
                     View todo
                 </a>
             </div>
@@ -38,6 +41,19 @@
             </c:if>
             <c:if test="${page=='add'}">
                 <h3 class="text-center">Add todos</h3>
+                <form:form action="${pageContext.request.contextPath}/saveTodo" method="post" modelAttribute="todo">
+                    <div class="form-group">
+                        <form:input path="title" cssClass="form-control"
+                                    placeholder="Enter todo title"/>
+                    </div>
+                    <div class="form-group">
+                        <form:textarea path="content" cssClass="form-control"
+                                       placeholder="Enter todo content" rows="5"/>
+                    </div>
+                    <div class="container text-center">
+                        <button class="btn btn-outline-success">Add todo</button>
+                    </div>
+                </form:form>
             </c:if>
         </div>
     </div>

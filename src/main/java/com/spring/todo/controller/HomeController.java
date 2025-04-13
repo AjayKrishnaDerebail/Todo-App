@@ -1,8 +1,11 @@
 package com.spring.todo.controller;
 
+import com.spring.todo.entities.Todo;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 @Controller
 public class HomeController {
@@ -15,11 +18,22 @@ public class HomeController {
     return "index";
   }
 
+
   @RequestMapping("/add")
   public String addTodo(Model model) {
     System.out.println("index");
     String page = "add";
     model.addAttribute("page",page);
+    Todo todo = new Todo();
+    model.addAttribute("todo",todo);
     return "index";
   }
+
+  @RequestMapping(value = "/saveTodo", method = RequestMethod.POST)
+  public String saveTodo(@ModelAttribute("todo") Todo todo, Model model) {
+    System.out.println("Saving todo: " + todo);
+    // TODO: Add service layer to save the todo
+    return "redirect:/";
+  }
+
 }
