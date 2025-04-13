@@ -19,6 +19,40 @@
     <property name="suffix" value=".jsp"/>
   </bean>
 
+  <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+    <property name="driverClassName" value="com.mysql.cj.jdbc.Driver"/>
+    <property name="url" value="jdbc:mysql://localhost:3306/springjdbc"/>
+    <property name="username" value="ajaykdbadmin"/>
+    <property name="password" value="Derebail@1234"/>
+  </bean>
+
+  <!-- JPA EntityManagerFactory Configuration -->
+  <bean id="entityManagerFactory"
+    class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
+    <property name="dataSource" ref="dataSource"/>
+    <property name="packagesToScan" value="com.spring.todo.entities"/>
+    <property name="jpaVendorAdapter">
+      <bean class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter"/>
+    </property>
+    <!-- Updated for jakarta.persistence and Hibernate 6+ -->
+    <property name="entityManagerFactoryInterface"
+      value="jakarta.persistence.EntityManagerFactory"/>
+    <property name="jpaProperties">
+      <props>
+        <!-- Hibernate configuration properties -->
+        <prop key="hibernate.transaction.coordinator_class">jdbc</prop>
+        <prop key="hibernate.hbm2ddl.auto">update</prop>
+        <prop key="hibernate.show_sql">true</prop>
+        <prop key="hibernate.format_sql">true</prop>
+      </props>
+    </property>
+  </bean>
+
+  <!-- JPA Transaction Manager -->
+  <bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
+    <property name="entityManagerFactory" ref="entityManagerFactory"/>
+  </bean>
+
   <mvc:annotation-driven/>
 
 
